@@ -3,8 +3,9 @@ var forbidden = ["is", "are", "was", "were"];
 document.getElementById("grade").addEventListener("click", function() {
   var out = [];
   var essay = document.getElementById("page").value;
-  var sentences = essay.split("."); //add regex .!?
+  var sentences = essay.split(/[.!?]+/); //add regex .!?
   for (i = 0; i < sentences.length; i++) {
+    sentences[i] = sentences[i].replace(/[|&;$%@"<>():'=`–\\_#^*+,]/g, "");
     var words = sentences[i].split(" "); //add regex all delims
     var words_so_far = []
     for (j = 0; j < words.length; j++) {
@@ -31,6 +32,7 @@ document.getElementById("grade").addEventListener("click", function() {
     if (i == sentences.length - 1) {
       out.pop()
     }//if end, removes extra period
+    out.push("</span> "); //just in case
   }//for sentence in essay
   console.log(out)
   var out_string = out.join("")
