@@ -19,7 +19,7 @@ document.getElementById("grade").addEventListener("click", function() {
         out.push("</span> ");
       }//if forbidden
       else if (words_so_far.indexOf(words[j].replace(/[|&;$%@"<>():'=`–\\_#^*+,]/g, "")) > -1) {
-        out.push("<span style=\"color: red;\">");
+        out.push("<span style=\"color: blue;\">");
         out.push(words[j]);
         out.push("</span> ");
       }//if repeated
